@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id           String      @id @default(cuid())
+  slug         String      @unique
+  title        String
+  author       String?
+  description  String?
+  coverUrl     String?
+  status       String?
+  sourceUrl    String?     @unique
+  chapterCount Int?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  chapters     Chapter[]
+  genres       BookGenre[]
+
+  @@index([title])
+  @@index([updatedAt])
+}
+
+model Chapter {
+  id              String    @id @default(cuid())
+  bookId          String
+  book            Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  chapterNumber   Int?
+  title           String
+  sourceChapterId String?
+  sourceUrl       String?   @unique
+  content         String?
+  crawledAt       DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([bookId, chapterNumber])
+  @@index([title])
+}
+
+model Genre {
+  id        String      @id @default(cuid())
+  slug      String      @unique
+  name      String      @unique
+  books     BookGenre[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model BookGenre {
+  bookId  String
+  genreId String
+  book    Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  genre   Genre  @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@id([bookId, genreId])
+}
+
+model CrawlLog {
+  id        String   @id @default(cuid())
+  scope     String
+  status    String
+  message   String?
+  startedAt DateTime @default(now())
+  endedAt   DateTime?
+
+  @@index([scope, startedAt])
+}
