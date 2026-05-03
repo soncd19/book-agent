@@ -18,6 +18,8 @@ FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV HOSTNAME=0.0.0.0
+ENV PORT=10000
 RUN corepack enable
 
 COPY --from=builder /app/.next/standalone ./
@@ -27,5 +29,5 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-EXPOSE 3000
+EXPOSE 10000
 CMD ["sh", "-c", "if [ -n \"$DATABASE_URL\" ]; then node node_modules/prisma/build/index.js migrate deploy; else echo 'DATABASE_URL is not set; skipping Prisma migrations'; fi && node server.js"]
