@@ -79,10 +79,10 @@ function text(value: string) {
 
 function cleanSourceBranding(value: string) {
   return value
-    .replace(/SS\s*Truyện/gi, "Book Agent")
-    .replace(/SSTruyen/gi, "Book Agent")
-    .replace(/TRUYỆN PLUS/gi, "Book Agent")
-    .replace(/Truyện Plus/gi, "Book Agent")
+    .replace(/SS\s*Truyện/gi, "MD Truyện")
+    .replace(/SSTruyen/gi, "MD Truyện")
+    .replace(/TRUYỆN PLUS/gi, "MD Truyện")
+    .replace(/Truyện Plus/gi, "MD Truyện")
     .trim();
 }
 
@@ -118,7 +118,7 @@ function uniqueByUrl<T extends { url: string }>(items: T[]) {
 export async function fetchSSTruyenHome(): Promise<SourceHomeData> {
   const response = await fetch(sourceBaseUrl, {
     headers: {
-      "user-agent": "BookAgent/0.1 (+local development reader)"
+      "user-agent": "MDTruyen/0.1 (+local development reader)"
     },
     next: { revalidate: 900 }
   });
@@ -278,7 +278,7 @@ export async function searchSourceBooks(query: string): Promise<SourceBook[]> {
 async function fetchSourceHtml(path: string, revalidate = 900) {
   const response = await fetch(new URL(path, sourceBaseUrl), {
     headers: {
-      "user-agent": "BookAgent/0.1 (+local development reader)"
+      "user-agent": "MDTruyen/0.1 (+local development reader)"
     },
     next: { revalidate }
   });

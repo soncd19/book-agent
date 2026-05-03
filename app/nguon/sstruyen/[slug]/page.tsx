@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: SourceBookPageProps): Promise
   try {
     const book = await fetchSSTruyenBook(slug);
     return {
-      title: `${book.title} - Đọc tại Book Agent`,
+      title: `${book.title} - Đọc tại MD Truyện`,
       description: book.description
     };
   } catch {
@@ -62,7 +62,7 @@ export default async function SourceBookPage({ params }: SourceBookPageProps) {
         <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4">
           <Link href="/" className="inline-flex items-center gap-2 text-lg font-extrabold text-red-700">
             <BookOpen size={22} />
-            Book Agent
+            MD Truyện
           </Link>
           <div className="ml-auto hidden h-9 w-64 items-center gap-2 rounded border border-zinc-200 bg-zinc-50 px-3 text-sm text-zinc-500 sm:flex">
             <Search size={16} />
@@ -75,7 +75,7 @@ export default async function SourceBookPage({ params }: SourceBookPageProps) {
         <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2 text-sm text-zinc-600">
           <Link href="/" className="inline-flex items-center gap-1 font-semibold hover:text-red-700">
             <ArrowLeft size={15} />
-            Book Agent
+            MD Truyện
           </Link>
           <ChevronRight size={14} />
           <span className="line-clamp-1 font-medium text-zinc-900">{book.title}</span>
@@ -235,7 +235,7 @@ export default async function SourceBookPage({ params }: SourceBookPageProps) {
           <section className="rounded-md border border-zinc-200 bg-white p-4">
             <h2 className="text-base font-bold uppercase tracking-wide">Truyện đang đọc</h2>
             <p className="mt-2 text-sm leading-6 text-zinc-600">
-              Vị trí đọc được lưu trong trình duyệt khi bạn mở chương bằng Book Agent.
+              Vị trí đọc được lưu trong trình duyệt khi bạn mở chương bằng MD Truyện.
             </p>
           </section>
         </aside>

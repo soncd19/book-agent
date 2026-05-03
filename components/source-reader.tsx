@@ -246,7 +246,7 @@ export function SourceReader({ chapter, chapters }: SourceReaderProps) {
         <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
           <Link href="/" className="inline-flex items-center gap-2 text-lg font-extrabold text-red-700">
             <BookOpen size={22} />
-            Book Agent
+            MD Truyện
           </Link>
           <Link
             href={`/nguon/sstruyen/${chapter.bookSlug}`}
@@ -259,7 +259,7 @@ export function SourceReader({ chapter, chapters }: SourceReaderProps) {
 
       <div className="border-b border-zinc-200 bg-zinc-100">
         <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-2 text-sm text-zinc-600">
-          <Link href="/" className="font-semibold hover:text-red-700">Book Agent</Link>
+          <Link href="/" className="font-semibold hover:text-red-700">MD Truyện</Link>
           <span>/</span>
           <Link href={`/nguon/sstruyen/${chapter.bookSlug}`} className="line-clamp-1 font-semibold hover:text-red-700">
             {chapter.bookTitle}
@@ -307,7 +307,7 @@ export function SourceReader({ chapter, chapters }: SourceReaderProps) {
         </div>
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-600">
-          <span>Bạn có thể dùng nút chương trước/tiếp để chuyển chương trong Book Agent.</span>
+          <span>Bạn có thể dùng nút chương trước/tiếp để chuyển chương trong MD Truyện.</span>
           <div className="flex gap-2">
             <button type="button" className="inline-flex items-center gap-1 rounded border border-zinc-200 px-3 py-2 font-semibold hover:bg-zinc-50">
               <ArrowLeft size={15} />

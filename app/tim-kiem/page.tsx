@@ -12,7 +12,7 @@ interface SearchPageProps {
 export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
   const { s } = await searchParams;
   return {
-    title: s ? `Tìm kiếm: ${s} - Book Agent` : "Tìm kiếm - Book Agent"
+    title: s ? `Tìm kiếm: ${s} - MD Truyện` : "Tìm kiếm - MD Truyện"
   };
 }
 
@@ -27,7 +27,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
           <Link href="/" className="inline-flex items-center gap-2 text-lg font-extrabold text-red-700">
             <BookOpen size={22} />
-            Book Agent
+            MD Truyện
           </Link>
           <form action="/tim-kiem" className="ml-auto flex h-10 w-full max-w-md items-center gap-2 rounded border border-zinc-200 bg-zinc-50 px-3">
             <Search size={17} className="shrink-0 text-zinc-400" />

@@ -1,10 +1,10 @@
 # SKILL: BOOK AGENT - WEB NOVEL READER
 
 ## ROLE
-Bạn là kỹ sư Full-stack phụ trách xây dựng, vận hành và mở rộng Book Agent: một web đọc truyện chữ tối ưu cho tốc độ, trải nghiệm đọc dài và triển khai production bằng Docker.
+Bạn là kỹ sư Full-stack phụ trách xây dựng, vận hành và mở rộng MD Truyện: một web đọc truyện chữ tối ưu cho tốc độ, trải nghiệm đọc dài và triển khai production bằng Docker.
 
 ## PROJECT CONTEXT
-- **Sản phẩm:** Web đọc truyện chữ, giao diện lấy cảm hứng từ các web đọc truyện Việt Nam nhưng thương hiệu hiển thị là Book Agent.
+- **Sản phẩm:** Web đọc truyện chữ, giao diện lấy cảm hứng từ các web đọc truyện Việt Nam nhưng thương hiệu hiển thị là MD Truyện.
 - **Mục tiêu:** Trải nghiệm đọc rõ ràng, mobile-first, có danh sách truyện, thể loại, tìm kiếm, trang chi tiết truyện, trang đọc chương và popup affiliate.
 - **Tech Stack:** Next.js App Router, React 19, Tailwind CSS, Lucide Icons, Cheerio crawler, PostgreSQL, Prisma, Docker, Render Blueprint.
 - **Deploy:** Dockerfile standalone Next.js + `docker-compose.yml` cho local production + `render.yaml` cho Render.
@@ -29,7 +29,7 @@ Bạn là kỹ sư Full-stack phụ trách xây dựng, vận hành và mở r�
 
 ### 3. Book Detail
 - Trang chi tiết `/nguon/sstruyen/[slug]` hiển thị:
-  - Breadcrumb Book Agent
+  - Breadcrumb MD Truyện
   - Thông tin truyện
   - Bìa, tác giả, thể loại, số chương, trạng thái
   - Giới thiệu nội dung
@@ -82,7 +82,7 @@ Bạn là kỹ sư Full-stack phụ trách xây dựng, vận hành và mở r�
 - `render.yaml`: Render deploy blueprint.
 
 ## DEVELOPMENT RULES
-1. Giữ UI hiển thị là Book Agent; không thêm lại text thương hiệu nguồn vào giao diện.
+1. Giữ UI hiển thị là MD Truyện; không thêm lại text thương hiệu nguồn vào giao diện.
 2. Các truyện crawl phải mở bằng route nội bộ, không chuyển người dùng sang website ngoài.
 3. Nếu thêm dữ liệu persistent, ưu tiên PostgreSQL qua Prisma.
 4. Nếu sửa reader, phải giữ mobile controls dễ bấm.

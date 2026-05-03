@@ -1,6 +1,6 @@
-# Book Agent
+# MD Truyện
 
-Book Agent is a Next.js web novel reader focused on fast browsing, clean chapter reading, internal search, and Docker-based deployment.
+MD Truyện is a Next.js web novel reader focused on fast browsing, clean chapter reading, internal search, and Docker-based deployment.
 
 ## Features
 
@@ -172,7 +172,7 @@ The Docker entrypoint skips Prisma migrations when `DATABASE_URL` is missing so 
 
 ## Current Data Flow
 
-The app currently crawls public story metadata and chapters at request time, then renders everything inside Book Agent routes.
+The app currently crawls public story metadata and chapters at request time, then renders everything inside MD Truyện routes.
 
 The database schema is ready, but the frontend still reads live crawler data first. The next recommended step is to add a sync job that stores books, chapters, genres, and crawl logs in PostgreSQL.
 

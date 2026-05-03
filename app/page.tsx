@@ -264,7 +264,7 @@ export default async function HomePage() {
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4">
           <Link href="/" className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-red-700">
             <BookOpen size={24} />
-            Book Agent
+            MD Truyện
           </Link>
 
           <HeaderMenu categories={sourceData.categories} />
