@@ -11,6 +11,7 @@ import {
   Star,
   UserRound
 } from "lucide-react";
+import { SourceChapterList } from "@/components/source-chapter-list";
 import { fetchSSTruyenBook, fetchSSTruyenHome, localBookHref } from "@/lib/sstruyen";
 
 export const dynamic = "force-dynamic";
@@ -179,34 +180,7 @@ export default async function SourceBookPage({ params }: SourceBookPageProps) {
             </div>
           </section>
 
-          <section className="rounded-md border border-zinc-200 bg-white">
-            <div className="grid gap-3 border-b border-zinc-200 px-4 py-3 md:grid-cols-[1fr_auto] md:items-center">
-              <h2 className="text-base font-bold uppercase tracking-wide">Danh sách chương</h2>
-              <form className="flex h-10 min-w-0 rounded border border-zinc-200 bg-zinc-50">
-                <input
-                  name="chapter"
-                  className="min-w-0 flex-1 bg-transparent px-3 text-sm outline-none"
-                  placeholder="Nhập số chương..."
-                />
-                <button type="button" className="border-l border-zinc-200 px-3 text-sm font-bold text-red-700">
-                  Tìm
-                </button>
-              </form>
-            </div>
-
-            <div className="grid md:grid-cols-2">
-              {book.chapters.map((chapter) => (
-                <Link
-                  key={chapter.sourceUrl}
-                  href={chapter.localHref}
-                  className="flex min-h-12 items-center justify-between gap-4 border-b border-zinc-100 px-4 py-3 hover:bg-red-50"
-                >
-                  <span className="line-clamp-1 text-sm font-semibold text-zinc-800">{chapter.title}</span>
-                  <ChevronRight size={17} className="shrink-0 text-zinc-400" />
-                </Link>
-              ))}
-            </div>
-          </section>
+          <SourceChapterList chapters={book.chapters} />
         </div>
 
         <aside className="space-y-5">
