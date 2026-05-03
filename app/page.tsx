@@ -88,7 +88,7 @@ function GenreTags({ genres }: { genres: string[] }) {
 
 function HotShelf({ books: hotBooks }: { books: SourceBook[] }) {
   return (
-    <section id="truyen-hot" className="border-b border-zinc-200 bg-white/88">
+    <section id="truyen-hot" className="border-b border-zinc-200 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-5">
         <div className="mb-3 flex items-center justify-between gap-3">
           <h2 className="inline-flex items-center gap-2 text-base font-bold uppercase tracking-wide text-zinc-900">
@@ -142,7 +142,7 @@ function LatestList({ latestBooks }: { latestBooks: SourceBook[] }) {
   }));
 
   return (
-    <section id="truyen-moi-cap-nhat" className="overflow-hidden rounded-md border border-zinc-200 bg-white/92 shadow-sm">
+    <section id="truyen-moi-cap-nhat" className="overflow-hidden rounded-md border border-zinc-200 bg-white">
       <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-4 py-3">
         <h2 className="inline-flex items-center gap-2 text-base font-bold uppercase tracking-wide">
           <Clock3 size={18} className="text-red-700" />
@@ -190,7 +190,7 @@ function LatestList({ latestBooks }: { latestBooks: SourceBook[] }) {
 function Sidebar({ categories, recommendedBooks }: { categories: SourceCategory[]; recommendedBooks: SourceBook[] }) {
   return (
     <aside className="space-y-4">
-      <section id="the-loai-truyen" className="rounded-md border border-zinc-200 bg-white/92 shadow-sm">
+      <section id="the-loai-truyen" className="rounded-md border border-zinc-200 bg-white">
         <h2 className="border-b border-zinc-200 px-4 py-3 text-base font-bold uppercase tracking-wide">Thể loại truyện</h2>
         <div className="grid grid-cols-2 gap-2 p-4">
           {categories.slice(0, 30).map((category) => (
@@ -207,7 +207,7 @@ function Sidebar({ categories, recommendedBooks }: { categories: SourceCategory[
         </div>
       </section>
 
-      <section id="top-de-cu" className="rounded-md border border-zinc-200 bg-white/92 shadow-sm">
+      <section id="top-de-cu" className="rounded-md border border-zinc-200 bg-white">
         <h2 className="border-b border-zinc-200 px-4 py-3 text-base font-bold uppercase tracking-wide">Top đề cử</h2>
         <div className="divide-y divide-zinc-100">
           {recommendedBooks.slice(0, 9).map((book, index) => (
@@ -231,7 +231,7 @@ function CompletedShelf({ completedBooks }: { completedBooks: SourceBook[] }) {
   }
 
   return (
-    <section id="truyen-hoan-thanh" className="mt-5 rounded-md border border-zinc-200 bg-white/92 shadow-sm">
+    <section id="truyen-hoan-thanh" className="mt-5 rounded-md border border-zinc-200 bg-white">
       <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-3">
         <h2 className="inline-flex items-center gap-2 text-base font-bold uppercase tracking-wide">
           <Sparkles size={18} className="text-red-700" />
@@ -259,14 +259,8 @@ export default async function HomePage() {
   const latestBooks = sourceData.latestBooks;
 
   return (
-    <main
-      className="min-h-screen bg-zinc-100 bg-cover bg-fixed bg-center text-zinc-950"
-      style={{
-        backgroundImage:
-          "linear-gradient(180deg, rgba(250,250,249,0.58), rgba(250,250,249,0.36) 38%, rgba(244,244,245,0.7)), url('/images/home-background.png')"
-      }}
-    >
-      <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white/92">
+    <main className="min-h-screen bg-[#f3f3f3] text-zinc-950">
+      <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4">
           <Link href="/" className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-red-700">
             <BookOpen size={24} />
@@ -293,7 +287,7 @@ export default async function HomePage() {
         </div>
       </header>
 
-      <div className="border-b border-red-950 bg-red-900/88 text-white">
+      <div className="border-b border-red-900 bg-red-800 text-white">
         <div className="mx-auto max-w-6xl px-4 py-2 text-sm font-medium">
           Danh sách truyện được cập nhật tự động, tối ưu cho trải nghiệm đọc gọn hơn.
         </div>
