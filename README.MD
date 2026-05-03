@@ -16,7 +16,8 @@ MD Truyện is a Next.js web novel reader focused on fast browsing, clean chapte
 - Internal chapter reader pages
 - Search page at `/tim-kiem?s=keyword`
 - Reader settings saved in `localStorage`
-- Affiliate interstitial modal every 5 chapters
+- Affiliate link management at `/admin/affiliate-links`
+- Affiliate interstitial modal every 5 chapters, resolved from PostgreSQL
 - PostgreSQL schema with Prisma
 - Docker Compose for local production
 - Render Blueprint deployment
@@ -130,6 +131,7 @@ Main models:
 - `Genre`
 - `BookGenre`
 - `CrawlLog`
+- `AffiliateLink`
 
 Run migrations in production:
 
@@ -166,9 +168,40 @@ If you create the web service manually instead of using Blueprint, add this envi
 
 ```text
 DATABASE_URL=<Internal Database URL from your Render PostgreSQL instance>
+ADMIN_USER=<admin username>
+ADMIN_PASSWORD=<strong admin password>
 ```
 
 The Docker entrypoint skips Prisma migrations when `DATABASE_URL` is missing so the app can still boot, but database-backed features require the variable to be configured.
+
+## Affiliate Link Management
+
+Open:
+
+```text
+/admin/affiliate-links
+```
+
+The admin page is protected with Basic Auth. Configure these environment variables before using it in production:
+
+```text
+ADMIN_USER
+ADMIN_PASSWORD
+```
+
+Links can be configured for:
+
+- `chapter_transition`: popup when moving to a chapter that triggers an affiliate interstitial
+- `reader_inline`: reserved for inline reader placements
+- `book_detail`: reserved for story detail placements
+- `home`: reserved for home page placements
+
+Scopes are resolved in this priority order:
+
+1. Chapter
+2. Book
+3. Genre
+4. Global
 
 ## Current Data Flow
 

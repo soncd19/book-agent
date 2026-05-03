@@ -4,15 +4,33 @@ import { X } from "lucide-react";
 
 interface AdInterstitialModalProps {
   open: boolean;
-  affiliateUrl: string;
+  affiliateLink: {
+    name: string;
+    platform: string;
+    url: string;
+  };
   onClose: () => void;
   onContinue: () => void;
 }
 
-export function AdInterstitialModal({ open, affiliateUrl, onClose, onContinue }: AdInterstitialModalProps) {
+function platformLabel(platform: string) {
+  if (platform === "tiktok") {
+    return "TikTok";
+  }
+
+  if (platform === "shopee") {
+    return "Shopee";
+  }
+
+  return "Ưu đãi";
+}
+
+export function AdInterstitialModal({ open, affiliateLink, onClose, onContinue }: AdInterstitialModalProps) {
   if (!open) {
     return null;
   }
+
+  const label = platformLabel(affiliateLink.platform);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 px-4 py-6">
@@ -32,22 +50,22 @@ export function AdInterstitialModal({ open, affiliateUrl, onClose, onContinue }:
         <div className="p-4">
           <div className="rounded-lg border border-orange-200 bg-orange-50 p-4">
             <div className="mb-3 inline-flex rounded-md bg-orange-600 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-              Shopee
+              {label}
             </div>
-            <h2 className="text-xl font-bold leading-tight">Mua sắm ủng hộ team</h2>
+            <h2 className="text-xl font-bold leading-tight">{affiliateLink.name}</h2>
             <p className="mt-2 text-sm leading-6 text-zinc-600">
-              Bạn có thể đóng ngay để đọc tiếp, hoặc ghé Shopee qua link affiliate để ủng hộ chi phí vận hành.
+              Bạn có thể đóng ngay để đọc tiếp, hoặc ghé liên kết giới thiệu để ủng hộ chi phí vận hành.
             </p>
           </div>
 
           <div className="mt-4 grid gap-2">
             <a
-              href={affiliateUrl}
+              href={affiliateLink.url}
               target="_blank"
               rel="noreferrer"
               className="rounded-md bg-orange-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-orange-700"
             >
-              Mua sắm ủng hộ Team
+              Mở liên kết {label}
             </a>
             <button
               type="button"

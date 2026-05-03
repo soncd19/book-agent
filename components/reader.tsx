@@ -6,6 +6,7 @@ import { AdInterstitialModal } from "@/components/ad-interstitial-modal";
 import { ChapterNavigation } from "@/components/chapter-navigation";
 import { ReaderControls } from "@/components/reader-controls";
 import { saveReadingPosition, useReaderSettings } from "@/hooks/use-reader-settings";
+import type { ResolvedAffiliateLink } from "@/lib/affiliate-links";
 import type { Book, Chapter } from "@/lib/books";
 
 interface ReaderProps {
@@ -13,9 +14,10 @@ interface ReaderProps {
   chapter: Chapter;
   previousChapter?: Chapter;
   nextChapter?: Chapter;
+  affiliateLink: ResolvedAffiliateLink;
 }
 
-export function Reader({ book, chapter, previousChapter, nextChapter }: ReaderProps) {
+export function Reader({ book, chapter, previousChapter, nextChapter, affiliateLink }: ReaderProps) {
   const router = useRouter();
   const [showAd, setShowAd] = useState(false);
   const { settings, setTheme, setFontFamily, increaseFontSize, decreaseFontSize } = useReaderSettings();
@@ -83,7 +85,7 @@ export function Reader({ book, chapter, previousChapter, nextChapter }: ReaderPr
 
       <AdInterstitialModal
         open={showAd}
-        affiliateUrl={nextChapter?.affiliateUrl ?? chapter.affiliateUrl}
+        affiliateLink={affiliateLink}
         onClose={continueAfterAd}
         onContinue={continueAfterAd}
       />

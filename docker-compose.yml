@@ -28,6 +28,8 @@ services:
       DATABASE_URL: postgresql://book_agent:book_agent_password@postgres:5432/book_agent?schema=public
       NEXT_PUBLIC_APP_URL: http://localhost:3000
       NODE_ENV: production
+      ADMIN_USER: admin
+      ADMIN_PASSWORD: change-me
     ports:
       - "3000:3000"
 

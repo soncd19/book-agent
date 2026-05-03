@@ -5,11 +5,13 @@ import { ArrowLeft, ArrowRight, BookOpen, List, Minus, Moon, Plus, Settings, Sun
 import { useEffect, useState } from "react";
 import { AdInterstitialModal } from "@/components/ad-interstitial-modal";
 import { saveReadingPosition, useReaderSettings, type ReaderTheme } from "@/hooks/use-reader-settings";
+import type { ResolvedAffiliateLink } from "@/lib/affiliate-links";
 import type { SourceChapterDetail, SourceChapterLink } from "@/lib/sstruyen";
 
 interface SourceReaderProps {
   chapter: SourceChapterDetail;
   chapters: SourceChapterLink[];
+  affiliateLink: ResolvedAffiliateLink;
 }
 
 function chapterNumberOf(target?: SourceChapterLink) {
@@ -204,7 +206,7 @@ function FloatingSettings({
   );
 }
 
-export function SourceReader({ chapter, chapters }: SourceReaderProps) {
+export function SourceReader({ chapter, chapters, affiliateLink }: SourceReaderProps) {
   const [pendingHref, setPendingHref] = useState<string | undefined>();
   const [showChapterList, setShowChapterList] = useState(false);
   const { settings, setTheme, increaseFontSize, decreaseFontSize } = useReaderSettings();
@@ -334,7 +336,7 @@ export function SourceReader({ chapter, chapters }: SourceReaderProps) {
 
       <AdInterstitialModal
         open={Boolean(pendingHref)}
-        affiliateUrl="https://shopee.vn/"
+        affiliateLink={affiliateLink}
         onClose={continueToChapter}
         onContinue={continueToChapter}
       />

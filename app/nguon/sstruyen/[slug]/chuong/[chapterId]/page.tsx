@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SourceReader } from "@/components/source-reader";
+import { getAffiliateLink } from "@/lib/affiliate-links";
 import { fetchSSTruyenBook, fetchSSTruyenChapter } from "@/lib/sstruyen";
 
 export const dynamic = "force-dynamic";
@@ -37,5 +38,10 @@ export default async function SourceChapterPage({ params }: SourceChapterPagePro
     notFound();
   }
 
-  return <SourceReader chapter={chapter} chapters={book.chapters} />;
+  const affiliateLink = await getAffiliateLink("chapter_transition", {
+    bookSlug: slug,
+    chapterId: decodeURIComponent(chapterId)
+  });
+
+  return <SourceReader chapter={chapter} chapters={book.chapters} affiliateLink={affiliateLink} />;
 }

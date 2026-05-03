@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Reader } from "@/components/reader";
-import { books, getAdjacentChapters, getChapter } from "@/lib/books";
+import { getAffiliateLink } from "@/lib/affiliate-links";
+import { getAdjacentChapters, getChapter } from "@/lib/books";
+
+export const dynamic = "force-dynamic";
 
 interface ChapterPageProps {
   params: Promise<{ slug: string; chapterNumber: string }>;
-}
-
-export function generateStaticParams() {
-  return books.flatMap((book) =>
-    book.chapters.map((chapter) => ({
-      slug: book.slug,
-      chapterNumber: String(chapter.chapterNumber)
-    }))
-  );
 }
 
 export async function generateMetadata({ params }: ChapterPageProps): Promise<Metadata> {
@@ -39,6 +33,11 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   }
 
   const { previousChapter, nextChapter } = getAdjacentChapters(book, chapter.chapterNumber);
+  const affiliateLink = await getAffiliateLink("chapter_transition", {
+    bookSlug: book.slug,
+    chapterId: String(chapter.chapterNumber),
+    genreSlugs: book.genres
+  });
 
-  return <Reader book={book} chapter={chapter} previousChapter={previousChapter} nextChapter={nextChapter} />;
+  return <Reader book={book} chapter={chapter} previousChapter={previousChapter} nextChapter={nextChapter} affiliateLink={affiliateLink} />;
 }
